@@ -45,6 +45,7 @@
             <th>Email</th>
             <th>Subject</th>
             <th>Salary</th>
+            <th>Joined Date</th>
         </tr>
 
         {% for teacher in teachers %}
@@ -53,6 +54,7 @@
             <td>{{ teacher.email }}</td>
             <td>{{ teacher.get_subjects_display }}</td>
             <td>{{ teacher.salary }}</td>
+            <td>{{ teacher.date_joined }}</td>
         </tr>
         {% endfor %}
     </table>
