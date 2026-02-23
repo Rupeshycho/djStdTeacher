@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c7be5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a5fd0;
+        }
+
+        .back-link {
+            text-align: center;
+            display: block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add Student</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Name -->
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+
+        <!-- Roll Number -->
+        <label for="roll_number">Roll Number</label>
+        <input type="number" name="roll_number" id="roll_number" required>
+
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <!-- Age -->
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" min="1" required>
+
+        <!-- Gender -->
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" required>
+            <option value="">Select Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select>
+
+        <!-- Class -->
+        <label for="student_class">Class</label>
+        <select name="student_class" id="student_class" required>
+            <option value="">Select Class</option>
+            <option value="ONE">Class 1</option>
+            <option value="TWO">Class 2</option>
+            <option value="THREE">Class 3</option>
+            <option value="FOUR">Class 4</option>
+            <option value="FIVE">Class 5</option>
+            <option value="SIX">Class 6</option>
+            <option value="SEVEN">Class 7</option>
+            <option value="EIGHT">Class 8</option>
+            <option value="NINE">Class 9</option>
+            <option value="TEN">Class 10</option>
+        </select>
+
+        <button type="submit">Save Student</button>
+
+    </form>
+
+    <a class="back-link" href="{% url 'student_list' %}">
+        ← Back to List
+    </a>
+
+</div>
+
+</body>
+</html>

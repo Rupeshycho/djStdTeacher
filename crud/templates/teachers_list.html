@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+        a.button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+        }
+        a.edit { background-color: #2c7be5; }
+        a.delete { background-color: #e52c2c; }
+        a.add { background-color: #28a745; margin-bottom: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+     <h1>Teachers Lists </h1>
+    
+
+
+    <table border="">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Salary</th>
+        </tr>
+
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.get_subjects_display }}</td>
+            <td>{{ teacher.salary }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
