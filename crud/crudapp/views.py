@@ -4,7 +4,7 @@ from .models import Student, Teacher
 # LIST
 def student_list(request):
     students = Student.objects.all()
-    return render(request, 'student_list.html', {'students': students})
+    return render(request, 'students/student_list.html', {'students': students})
 
 # ADD
 def student_add(request):
@@ -18,12 +18,12 @@ def student_add(request):
             student_class=request.POST.get('student_class')
         )
         return redirect('student_list')
-    return render(request, 'student_form.html')
+    return render(request, 'students/student_form.html')
 
 # DETAIL
 def student_detail(request, id):
     student = get_object_or_404(Student, id=id)
-    return render(request, 'student_detail.html', {'student': student})
+    return render(request, 'students/student_detail.html', {'student': student})
 
 # EDIT / UPDATE
 def student_edit(request, id):
@@ -37,7 +37,7 @@ def student_edit(request, id):
         student.student_class = request.POST.get('student_class')
         student.save()
         return redirect('student_list')
-    return render(request, 'student_edit.html', {'student': student})
+    return render(request, 'students/student_edit.html', {'student': student})
 
 # DELETE
 def student_delete(request, id):
@@ -45,28 +45,25 @@ def student_delete(request, id):
     if request.method == "POST":
         student.delete()
         return redirect('student_list')
-    return render(request, 'student_delete.html', {'student': student})
+    return render(request, 'students/student_delete.html', {'student': student})
 
 
 
 #List 
 def teachers_list(request):
     teachers = Teacher.objects.all()
-    return render(request, 'teachers_list.html', {'teachers': teachers})
+    return render(request, 'teachers/teachers_list.html', {'teachers': teachers})
 
 
-#ADD
-#   # Add Teacher
-# def student_add(request):  
-#     if request.method == "POST":
-#         Teacher.objects.create(
-#             name=request.POST.get('name'),
-#             email=request.POST.get('email'),
-#             phone=request.POST.get('phone'),
-#             gender=request.POST.get('gender'),
-#             subjects=request.POST.get('subject'),  # or subject if renamed
-#             salary=request.POST.get('salary')
-#         )
-#         return redirect('teacher_list')
-#     teachers=Teacher.objects.all()
-    
+def teacher_add(request):
+    if request.method=="POST":
+        Teacher.objects.create(
+            name=request.POST.get('name'),
+            email=request.POST.get('email'),
+            phone=request.POST.get('phone'),
+            gender=request.POST.get('gender'),
+            subjects=request.POST.get('subjects'),
+            salary=request.POST.get('salary')
+        )
+        return redirect('teachers_list')
+    return render(request, 'teachers/teacher_form.html')
