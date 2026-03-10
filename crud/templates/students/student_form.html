@@ -1,4 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Add Student</title>
@@ -7,6 +9,10 @@
             font-family: Arial, sans-serif;
             background-color: #f4f6f9;
             padding: 40px;
+        }
+        img{
+            widtth: 100px;
+            height: 100px;
         }
 
         .container {
@@ -58,8 +64,11 @@
 
     <h2>Add Student</h2>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+        
+        <label for="photo">Upload Photo</label>
+        <input type="file" name="photo" id="photo">
 
         <!-- Name -->
         <label for="name">Name</label>

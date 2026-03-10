@@ -10,6 +10,8 @@ def student_list(request):
 def student_add(request):
     if request.method == "POST":
         Student.objects.create(
+            photo=request.FILES.get('photo'),
+            
             name=request.POST.get('name'),
             roll_number=request.POST.get('roll_number'),
             email=request.POST.get('email'),
@@ -29,6 +31,9 @@ def student_detail(request, id):
 def student_edit(request, id):
     student = get_object_or_404(Student, id=id)
     if request.method == "POST":
+        if request.FILES.get('photo'):
+            student.photo=request.FILES.get('photo')
+            
         student.name = request.POST.get('name')
         student.roll_number = request.POST.get('roll_number')
         student.email = request.POST.get('email')
@@ -61,6 +66,7 @@ def teacher_add(request):
             name=request.POST.get('name'),
             email=request.POST.get('email'),
             phone=request.POST.get('phone'),
+            photo =request.FILES.get('photo'),
             gender=request.POST.get('gender'),
             subjects=request.POST.get('subjects'),
             salary=request.POST.get('salary')

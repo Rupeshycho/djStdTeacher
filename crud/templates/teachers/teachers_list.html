@@ -55,16 +55,27 @@
     <table border="">
         <tr>
             <th>ID</th>
+            <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Subject</th>
             <th>Salary</th>
             <th>Joined Date</th>
+
         </tr>
 
         {% for teacher in teachers %}
         <tr>
+            
             <td>{{ forloop.counter }}</td>
+            <td>
+                {% if teacher.photo %}
+                    <img src="{{ teacher.photo.url }}" width="80" alt="{{ teacher.name }}">
+                {% else %}
+                    {% comment %} <img src="{% static 'cat.png' %}" width="80" alt="No Photo"> {% endcomment %}
+                {% endif %}
+            </td>
+
             <td>{{ teacher.name }}</td>
             <td>{{ teacher.email }}</td>
             <td>{{ teacher.get_subjects_display }}</td>
